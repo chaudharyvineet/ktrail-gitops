@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: docker.io/franzherman/ktrail
+  repository: franzherman/ktrail
   tag: latest
   pullPolicy: IfNotPresent
 

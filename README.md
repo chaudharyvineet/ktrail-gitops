@@ -17,7 +17,7 @@ Production-grade  GitOps, Kubernetes, observability, and security controls.
 ```text
 platform-gitops-demo/
 ├── app/                         #  Python API with /metrics
-├── apps/demo-api/               # Helm chart for app
+├── apps/ktrail-api/               # Helm chart for app
 ├── argocd/                      # ArgoCD Application manifests
 ├── monitoring/                  # kube-prometheus-stack values
 ├── security/                    # Optional namespace/security policies
@@ -44,7 +44,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret \
 Edit these files and replace `YOUR_USERNAME`:
 
 - `argocd/monitoring-app.yaml`
-- `argocd/demo-api-app.yaml`
+- `argocd/ktrail-api-app.yaml`
 
 ## 3. Deploy monitoring through ArgoCD
 
@@ -73,14 +73,14 @@ admin / admin
 ## 4. Deploy demo app through ArgoCD
 
 ```bash
-kubectl apply -f argocd/demo-api-app.yaml
-kubectl get pods -n demo-api
+kubectl apply -f argocd/ktrail-api-app.yaml
+kubectl get pods -n ktrail-api
 ```
 
 Access app:
 
 ```bash
-kubectl port-forward svc/demo-api -n demo-api 8080:80
+kubectl port-forward svc/ktrail-api -n ktrail-api 8080:80
 curl http://localhost:8080/
 curl http://localhost:8080/metrics
 ```
@@ -90,7 +90,7 @@ curl http://localhost:8080/metrics
 Manually scale the app:
 
 ```bash
-kubectl scale deployment demo-api -n demo-api --replicas=1
+kubectl scale deployment ktrail-api -n ktrail-api --replicas=1
 ```
 
 ArgoCD should detect drift and restore it back to the desired replica count from Git.

@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-api
+  name: ktrail-api
   labels:
-    app: demo-api
-    app.kubernetes.io/name: demo-api
+    app: ktrail-api
+    app.kubernetes.io/name: ktrail-api
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app.kubernetes.io/name: demo-api
+    app.kubernetes.io/name: ktrail-api
   ports:
     - name: http
       port: {{ .Values.service.port }}

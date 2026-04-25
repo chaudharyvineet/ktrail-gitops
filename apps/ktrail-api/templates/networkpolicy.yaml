@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: demo-api-ingress
+  name: ktrail-api-ingress
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: demo-api
+      app.kubernetes.io/name: ktrail-api
   policyTypes:
     - Ingress
   ingress:

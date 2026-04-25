@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-api
+  name: ktrail-api
   labels:
-    {{- include "demo-api.labels" . | nindent 4 }}
+    {{- include "ktrail-api.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: demo-api
+      app.kubernetes.io/name: ktrail-api
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: demo-api
+        app.kubernetes.io/name: ktrail-api
     spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: demo-api
+        - name: ktrail-api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:

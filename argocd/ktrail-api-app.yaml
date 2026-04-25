@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-api
+  name: ktrail-api
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chaudharyvineet/ktrail-gitops.git
     targetRevision: main
-    path: apps/demo-api
+    path: apps/ktrail-api
     helm:
       valueFiles:
         - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo-api
+    namespace: ktrail-api
   syncPolicy:
     automated:
       prune: true

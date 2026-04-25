@@ -14,12 +14,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build image
-        run: docker build -t demo-api:scan ./app
+        run: docker build -t ktrail-api:scan ./app
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: demo-api:scan
+          image-ref: ktrail-api:scan
           format: table
           exit-code: '0'
           vuln-type: os,library

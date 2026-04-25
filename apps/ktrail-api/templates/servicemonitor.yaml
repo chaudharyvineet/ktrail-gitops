@@ -2,13 +2,13 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: demo-api
+  name: ktrail-api
   labels:
     release: monitoring
 spec:
   selector:
     matchLabels:
-      app: demo-api
+      app: ktrail-api
   endpoints:
     - port: http
       path: {{ .Values.serviceMonitor.path }}

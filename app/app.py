@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 REQUEST_COUNT = Counter(
     "demo_api_requests_total",
-    "Total HTTP requests handled by demo-api",
+    "Total HTTP requests handled by ktrail-api",
     ["endpoint", "method", "status"]
 )
 
@@ -24,7 +24,7 @@ def home():
     REQUEST_COUNT.labels(endpoint="/", method="GET", status="200").inc()
     REQUEST_LATENCY.labels(endpoint="/").observe(time.time() - start)
     return jsonify({
-        "service": "demo-api",
+        "service": "ktrail-api",
         "status": "ok",
         "message": "GitOps demo running on Kubernetes"
     })
